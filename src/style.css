@@ -1,0 +1,45 @@
+body {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: antiquewhite;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.sentence-display {
+    color: grey;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width:100%;
+    padding:10px;
+    margin-bottom: 20px;
+}
+
+.results {
+    color:grey;
+    margin-bottom: 20px;
+}
+
+.play-button {
+    padding:8px 20px;
+    background-color: rgb(255, 127, 242);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.play-button:hover {
+    background-color: cornflowerblue;
+}
+
+.timer-display {
+    color: purple;
+    margin-top: 10px;
+}
