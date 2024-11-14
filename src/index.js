@@ -14,6 +14,7 @@ const sentenceDisplay = document.getElementById("sentenceDisplay");
 const inputField = document.getElementById("inputField");
 const resultsSection = document.getElementById("resultsSection");
 const timerDisplay = document.getElementById("timerDisplay");
+const restartButton = document.getElementById("restartButton");
 
 
 // Sentence Fetching
@@ -41,6 +42,7 @@ async function displaySentence(){
 // Event listeners
 playButton.addEventListener('click', startGame);
 inputField.addEventListener('input', trackTyping);
+restartButton.addEventListener('click', restartGame);
 
 // Start the game
 function startGame(){
@@ -58,6 +60,9 @@ function startGame(){
     inputField.style.display = 'block';
     sentenceDisplay.style.display = 'block';
     timerDisplay.style.display = 'block';
+    playButton.style.display = 'none';
+    restartButton.style.display = 'block';
+    restartButton.style.margin = 'auto';
 }
 
 // Using setInternal method
@@ -70,7 +75,7 @@ function startTimer(){
         else {
             endGame();
         }  
-    }, 1000);
+    }, 1000); // 1000 = 1 second
 }
 
 // Typing and tracking functions
@@ -130,6 +135,27 @@ function calculateWPM(){
     wpm = Math.floor((correctCharacters / 5) / (timeElapsed / 60));
     console.log("Words Per min: ", wpm);
     return wpm;
+}
+
+// Restart Game Functionality
+function restartGame(){
+    // Reset game variables and UI Elements
+    correctCharacters = 0;
+    totalCharacters = 0;
+    startTime = null;
+    // Reset timer
+    timer = 10;
+    clearInterval(timerInterval);
+
+    // Reset and enable input fields
+    inputField.value = "";
+    inputField.style.display = "block";
+
+    // Display the new sentence and reset other UI Elements
+    displaySentence();
+    resultsSection.innerText = "";
+    timerDisplay.textContent = `Time Left: ${timer}s`;
+    playButton.style.display = 'none';
 }
 
 function endGame(){
